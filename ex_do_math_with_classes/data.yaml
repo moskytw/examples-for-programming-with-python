@@ -1,0 +1,30 @@
+%YAML 1.1
+---
+
+example1: !Network
+
+    max_demands: [2, 2]
+
+    arcs:
+        - !Arc &e1arc1
+            caps: [0   , 1   , 2   ]
+            prs : [0.05, 0.10, 0.85]
+            consumed_caps: [1, 1]
+        - !Arc &e1arc2
+            caps: [0   , 1   , 2   , 3   ]
+            prs : [0.05, 0.10, 0.15, 0.70]
+            consumed_caps: [1, 1.5]
+        - !Arc &e1arc3
+            caps: [0   , 1   , 2   , 3   ]
+            prs : [0.05, 0.05, 0.10, 0.80]
+            consumed_caps: [1, 2]
+        - !Arc &e1arc4
+            caps: [0   , 1   , 2   ]
+            prs : [0.05, 0.15, 0.80]
+            consumed_caps: [1, 0.5]
+
+    paths:
+        - &e1path1 [*e1arc1, *e1arc3]
+        - &e1path2 [*e1arc1, *e1arc4]
+        - &e1path3 [*e1arc2, *e1arc3]
+        - &e1path4 [*e1arc2, *e1arc4]
